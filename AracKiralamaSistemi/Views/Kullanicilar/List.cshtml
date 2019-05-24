@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AracKiralama.Entity.kullanicilar>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eposta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eposta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sifre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new {  id=item.kullaniciID })
+        </td>
+    </tr>
+}
+
+</table>

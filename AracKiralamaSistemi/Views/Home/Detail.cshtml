@@ -1,0 +1,43 @@
+﻿@model AracKiralama.Entity.araclar
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = Layout = "~/Views/Shared/_UserLayout.cshtml"; ;
+}
+<head>
+    
+</head>
+<h2>Ürün Detayı</h2>
+@Html.HiddenFor(m => m.aracID)
+<div class="center_title_bar">@Html.DisplayFor(m => m.aracMarka)</div>
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_img_big">
+            <a href="javascript:popImage('~/images/big_pic.jpg','Some Title')" title="header=[Zoom] body=[&nbsp;] fade=[on]">
+                <img src="~/Upload/@Html.DisplayFor(m => m.photo)" alt="" border="0" width="92" height="92" />
+            </a>
+        </div>
+        <div class="details_big_box">
+            <div class="product_title_big">@Html.DisplayFor(m => m.aracModel)</div>
+            <div class="specifications">
+                Gereken Ehliyet Yasi: <span class="blue">@Html.DisplayFor(m => m.gerekenEhliyetYasi)</span><br />
+                Günlük Sınır Km: <span class="blue">@Html.DisplayFor(m=>m.gunlukSinirKm)</span><br />
+                Bagaj Hacmi: <span class="blue">@Html.DisplayFor(m => m.bagajHacmi)</span><br />
+                Anlık Km: <span class="blue">@Html.DisplayFor(m => m.anlikKm)</span><br />
+                Koltuk Sayisi: <span class="blue">@Html.DisplayFor(m => m.koltukSayisi)</span><br />
+            </div>
+            <div class="prod_price_big"> <span class="price">@Html.DisplayFor(m => m.fiyat)</span></div>
+            @{
+                if (Session["User"] != null)
+                {
+                    if (Model.aracDurumu==false)
+                    {
+                        <a href="~/Arac/AracKiralama" class="prod_details">Kirala</a>@*Kiralama Lİnkini gönder*@
+                    }
+
+                }
+            }
+        </div>
+        </div></div>
+

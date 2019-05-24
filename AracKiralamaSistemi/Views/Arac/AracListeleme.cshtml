@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AracKiralama.Entity.araclar>
+
+@{
+    ViewBag.Title = "AracListeleme";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Arac Listesi</h2>
+
+<p>
+    @Html.ActionLink("Arac Ekle", "AracInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p style="font-weight:bold;" class="control-label col-md-2">Aracın Markası:</p>
+        </th>
+        <th>
+            <p style="font-weight:bold;" class="control-label col-md-2">Aracın Model:</p>
+        </th>
+        <th>
+            <p style="font-weight:bold;" class="control-label col-md-2">Airbag Var Mı:</p>
+        </th>
+        <th>
+            <p style="font-weight:bold;" class="control-label col-md-2">Aracın Renk:</p>
+        </th>
+        <th>
+            <p style="font-weight:bold;" class="control-label col-md-2">Aracın Günlük Fiyat:</p>
+        </th>
+        <th>
+            <p style="font-weight:bold;" class="control-label col-md-2">Aracın Durumu:</p>
+        </th>
+        <th>
+            <p style="font-weight:bold;" class="control-label col-md-2">Fotoğraf:</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.aracMarka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aracModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.airbag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.renk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aracDurumu)
+        </td>
+        <td>
+            <img src="~/Upload/@item.photo" width="100" height="100"  />
+        </td>
+        <td>
+            @Html.ActionLink("Bilgi Guncelle", "AracUpdate", new {  id=item.aracID }) |
+            @Html.ActionLink("Arac Sil", "AracDelete", new {  id=item.aracID })
+        </td>
+    </tr>
+}
+
+</table>
